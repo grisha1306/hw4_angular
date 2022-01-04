@@ -2,10 +2,10 @@
   <h2>Students</h2>
     <form class="input-form">
       <table class="tableForm">
-        <div ngModelGroup="fullName" #fullName="ngModelGroup">
+        <div ngModelGroup="fullName" #fullName="ngModelGroup" class="fullName">
         <tr>
-          <td>Surname: </td>
-          <td><input class="textBox textSizer" type="text" [(ngModel)]="lName" id="lName" name="lName"
+          <td class="td-input-form-name">Surname: </td>
+          <td class="td-input-form-value"><input class="textBox-val" type="text" [(ngModel)]="lName" id="lName" name="lName"
                      required maxlength="30" minlength="2"
                      #lname="ngModel"
                      placeholder="Surname">
@@ -26,8 +26,8 @@
         </tr>
 
         <tr>
-          <td>Name: </td>
-          <td><input class="textBox textSizer" type="text" [(ngModel)]="fName" id="fName" name="fName"
+          <td class="td-input-form-name">Name: </td>
+          <td class="td-input-form-value"><input class="textBox-val" type="text" [(ngModel)]="fName" id="fName" name="fName"
                      required maxlength="30" minlength="2"
                      #fname="ngModel"
                      placeholder="Name"></td>
@@ -47,8 +47,8 @@
 
         </tr>
         <tr>
-          <td>Patronymic: </td>
-          <td><input class="textBox textSizer" type="text" [(ngModel)]="patronymic" id="patronymic" name="patronymic"
+          <td class="td-input-form-name">Patronymic: </td>
+          <td class="td-input-form-value"><input class="textBox-val" type="text" [(ngModel)]="patronymic" id="patronymic" name="patronymic"
                      required maxlength="30" minlength="2"
                      #Patronymic="ngModel"
                      placeholder="Patronymic"></td>
@@ -116,20 +116,20 @@
     <h3>Filter</h3>
     <table class="filterTable">
       <tr>
-        <td>Min Value Average</td>
-        <td><input  type="number" step="0.1"  id="minFilterAver" [(ngModel)]="minFilterAver"/></td>
+        <td class="td-input-form-name">Min Value Average</td>
+        <td class="td-input-form-value"><input class="textBox-val" type="number" step="0.1"  id="minFilterAver" [(ngModel)]="minFilterAver"/></td>
       </tr>
       <tr>
-        <td>Max Value Average</td>
-        <td><input  type="number" step="0.1"  id="maxFilterAver" [(ngModel)]="maxFilterAver"/></td>
+        <td class="td-input-form-name">Max Value Average</td>
+        <td class="td-input-form-value"><input class="textBox-val" type="number" step="0.1"  id="maxFilterAver" [(ngModel)]="maxFilterAver"/></td>
       </tr>
       <tr>
-        <td>Min Value Date</td>
-        <td><input  type="date"  id="minFilterDate" [(ngModel)]="minFilterDate"/></td>
+        <td class="td-input-form-name">Min Value Date</td>
+        <td class="td-input-form-value"><input class="textBox-val" type="date"  id="minFilterDate" [(ngModel)]="minFilterDate"/></td>
       </tr>
       <tr>
-        <td>Max Value Date</td>
-        <td><input  type="date"  id="maxFilterDate" [(ngModel)]="maxFilterDate"/> </td>
+        <td class="td-input-form-name">Max Value Date</td>
+        <td class="td-input-form-value"><input class="textBox-val" type="date"  id="maxFilterDate" [(ngModel)]="maxFilterDate"/> </td>
       </tr>
     </table>
     <input type="button" class="button-filter" (click)="filterByAverage()" value="Filter"/>

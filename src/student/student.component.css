@@ -1,5 +1,5 @@
 .container {
-  background-color: aqua;
+  background-color: moccasin;
 }
 
 .popover {
@@ -49,7 +49,7 @@ table.tableForm {
 
 .tableAction {
   margin-top: 10px;
-  margin-left: 80px;
+  margin-left: 28%;
 }
 
 .alert-danger {
@@ -78,7 +78,7 @@ table.tableForm {
 
 table.filterTable {
   text-align: center;
-  margin-left: 40%;
+  margin-left: 35%;
   border-collapse: collapse;
   margin-bottom: 10px;
 }
@@ -94,19 +94,15 @@ table.tableForm {
 }
 
 .input-form {
-  margin-left: 40%;
+  margin-left: 35%;
   margin-bottom: 10px;
+  margin-right: 30%;
 }
 
 .filter {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 150px;
-
-}
-
-.input-form.tableForm {
-
 }
 
 .search-form {
@@ -117,19 +113,23 @@ h2 {
   text-align: center;
 }
 
-.td-input-form-name {
-  width: 78px;
+.td-input-form-name{
+  width: 10em;
 }
 
 .td-input-form-value {
-  width: 170px;
+  width: 60%;
 }
 
 .textBox-val {
-  width: 162px;
+  width: 80%;
 }
 
 .button-filter {
   margin-right: 10px;
 }
 
+.birthDay,
+.Average {
+  display: table-row;
+}
