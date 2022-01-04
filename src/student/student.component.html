@@ -1,0 +1,200 @@
+<div class="container">
+  <h2>Students</h2>
+    <form class="input-form">
+      <table class="tableForm">
+        <div ngModelGroup="fullName" #fullName="ngModelGroup">
+        <tr>
+          <td>Surname: </td>
+          <td><input class="textBox textSizer" type="text" [(ngModel)]="lName" id="lName" name="lName"
+                     required maxlength="30" minlength="2"
+                     #lname="ngModel"
+                     placeholder="Surname">
+          </td>
+
+          <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+               class="alert-danger">
+            <div *ngIf="lname.errors?.['required']">
+              Surname is required.
+            </div>
+            <div *ngIf="lname.errors?.['maxlength']">
+              Surname cannot be more than 30 characters long.
+            </div>
+            <div *ngIf="lname.errors?.['minlength']">
+              Surname must be at least 2 characters long.
+            </div>
+          </div>
+        </tr>
+
+        <tr>
+          <td>Name: </td>
+          <td><input class="textBox textSizer" type="text" [(ngModel)]="fName" id="fName" name="fName"
+                     required maxlength="30" minlength="2"
+                     #fname="ngModel"
+                     placeholder="Name"></td>
+
+          <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+               class="alert-danger">
+            <div *ngIf="fname.errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="fname.errors?.['maxlength']">
+              Name cannot be more than 30 characters long.
+            </div>
+            <div *ngIf="fname.errors?.['minlength']">
+              Name must be at least 2 characters long.
+            </div>
+          </div>
+
+        </tr>
+        <tr>
+          <td>Patronymic: </td>
+          <td><input class="textBox textSizer" type="text" [(ngModel)]="patronymic" id="patronymic" name="patronymic"
+                     required maxlength="30" minlength="2"
+                     #Patronymic="ngModel"
+                     placeholder="Patronymic"></td>
+
+          <div *ngIf="Patronymic.invalid && (Patronymic.dirty || Patronymic.touched)"
+               class="alert-danger">
+            <div *ngIf="Patronymic.errors?.['required']">
+              Patronymic is required.
+            </div>
+            <div *ngIf="Patronymic.errors?.['maxlength']">
+              Patronymic cannot be more than 30 characters long.
+            </div>
+            <div *ngIf="Patronymic.errors?.['minlength']">
+              Patronymic must be at least 2 characters long.
+            </div>
+          </div>
+        </tr>
+        </div>
+
+        <div class="birthDay">
+        <tr>
+          <td class="td-input-form-name">BirthDay: </td>
+          <td class="td-input-form-value"><input class="textBox-val" type="date" [(ngModel)]="birthDay" id="birthDay" name="birthDay" placeholder="BirthDay"></td>
+        </tr>
+        </div>
+
+        <div class="Average">
+        <tr>
+          <td class="td-input-form-name">Average: </td>
+          <td class="td-input-form-value"><input class="textBox-val" type="number" [(ngModel)]="average" id="average" name="average" step="0.1"
+                     required max="5" min="1"
+                     #Average="ngModel"
+                     placeholder="Average"></td>
+
+          <div *ngIf="Average.invalid && (Average.dirty || Average.touched)"
+               class="alert-danger">
+            <div *ngIf="Average.errors?.['required']">
+              Average is required.
+            </div>
+            <div *ngIf="Average.errors?.['max']">
+              Average cannot be more than 5.
+            </div>
+            <div *ngIf="Average.errors?.['min']">
+              Average must be at least 1.
+            </div>
+          </div>
+        </tr>
+        </div>
+      </table>
+
+      <div class="tableAction">
+        <input (click)="addStudent()" class="button-add" type="button" value="Add">
+        <input (click)="editStudent()" class="button-edit" type="button" value="Edit">
+        <button type="reset" class="button-reset" data-dismiss="modal">Reset</button>
+      </div>
+    </form>
+
+
+  <form class="search-form">
+    <h3>Search</h3>
+    <label>Search: <input [(ngModel)]="searchText" name="search"></label>
+  </form>
+
+  <div class="filter">
+    <h3>Filter</h3>
+    <table class="filterTable">
+      <tr>
+        <td>Min Value Average</td>
+        <td><input  type="number" step="0.1"  id="minFilterAver" [(ngModel)]="minFilterAver"/></td>
+      </tr>
+      <tr>
+        <td>Max Value Average</td>
+        <td><input  type="number" step="0.1"  id="maxFilterAver" [(ngModel)]="maxFilterAver"/></td>
+      </tr>
+      <tr>
+        <td>Min Value Date</td>
+        <td><input  type="date"  id="minFilterDate" [(ngModel)]="minFilterDate"/></td>
+      </tr>
+      <tr>
+        <td>Max Value Date</td>
+        <td><input  type="date"  id="maxFilterDate" [(ngModel)]="maxFilterDate"/> </td>
+      </tr>
+    </table>
+    <input type="button" class="button-filter" (click)="filterByAverage()" value="Filter"/>
+    <input type="button" (click)="viewAll()" value="View All"/>
+  </div>
+
+  <table class="tableStudents">
+    <thead>
+    <tr>
+      <th [appSort]="students" data-order="desc" data-name="_surname" scope="col">Last Name</th>
+      <th [appSort]="students" data-order="desc" data-name="_name" scope="col">First name</th>
+      <th [appSort]="students" data-order="desc" data-name="_patronymic" scope="col">Patronymic</th>
+      <th [appSort]="students" data-order="desc" data-name="_birthDay" scope="col">Birth Day</th>
+      <th [appSort]="students" data-order="desc" data-name="_average" scope="col">Average</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let student of filteredItems; index as i;">
+      <ng-template #customTemplate let-options="options">
+        <div [class]="'popover ' + options.placement" style="display: block">
+          <p>Are you Sure ?</p>
+          <button type="button" (click)="deleteStudent(student.id)">Yes</button>
+        </div>
+      </ng-template>
+
+      <tr *ngIf="student.name === searchText || student.surname === searchText;else other_content" class="search">
+          <td>{{student.surname}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.patronymic}}</td>
+          <td>{{student.birthDay}}</td>
+          <td>{{student.average}}</td>
+          <td>
+            <button type="button" class="button-edit" (click)="editInForm(student)">Edit</button>
+            <button type="button"
+                    class="button-delete"
+                    mwlConfirmationPopover
+                    [customTemplate]="customTemplate"
+                    placement = "right">Delete</button>
+
+          </td>
+      </tr>
+
+
+      <ng-template #other_content class="notSearch">
+        <tr>
+        <td>{{student.surname}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.patronymic}}</td>
+        <td>{{student.birthDay}}</td>
+        <td>{{student.average}}</td>
+        <td>
+          <button type="button" class="button-edit" (click)="editInForm(student)">Edit</button>
+          <button type="button"
+                  class="button-delete"
+                  mwlConfirmationPopover
+                  [customTemplate]="customTemplate"
+                  placement = "top">Delete</button>
+        </td>
+        </tr>
+      </ng-template>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+
