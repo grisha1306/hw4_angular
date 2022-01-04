@@ -1,6 +1,5 @@
 import {Component, HostListener, OnInit} from "@angular/core";
 import {Student} from "./model/student";
-import {PopupService} from "@clementvh/angular-popup";
 
 @Component({
   selector: 'app-student',
